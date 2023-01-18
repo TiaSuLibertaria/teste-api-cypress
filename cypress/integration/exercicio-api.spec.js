@@ -2,10 +2,13 @@
 import {
      faker
 } from "@faker-js/faker";
+import contrato from '../contracts/usuario.contract'
 
 describe("Testes da Funcionalidade Usuários", () => {
      it("Deve validar contrato de usuários", () => {
-          //TODO:
+          cy.request('usuarios').then(response => {
+               return contrato.validateAsync(response.body)
+          })
      });
 
      it("Deve listar usuários cadastrados", () => {
